@@ -20,8 +20,14 @@ custom:
 
 provider:
   name: aws
+  memorySize: 256
   runtime: nodejs14.x
   region: sa-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: "*"
 
 functions:
   createTodos:
@@ -51,6 +57,10 @@ resources:
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
+          - AttributeName: userid
+            AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+          - AttributeName: userid
+            KeyType: RANGE

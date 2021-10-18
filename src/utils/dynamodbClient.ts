@@ -7,10 +7,9 @@ const options = {
 }
 
 
-// const isOffline = () => {
-//     return process.env.IS_OFFLINE
-// }
+const isOffline = () => {
+    return process.env.IS_OFFLINE
+}
 
-export const document = new DynamoDB.DocumentClient(options)
-// export const document = isOffline() ? new DynamoDB.DocumentClient(options) : new DynamoDB.DocumentClient()
+export const document = isOffline() ? new DynamoDB.DocumentClient(options) : new DynamoDB.DocumentClient()
 

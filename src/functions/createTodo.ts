@@ -16,7 +16,7 @@ export const handle: APIGatewayProxyHandler  = async (event) => {
         TableName: "todos",
         Item: {
             id: uuidv4(),
-            user_id,
+            userid: user_id,
             title,
             done: false,
             deadline,
